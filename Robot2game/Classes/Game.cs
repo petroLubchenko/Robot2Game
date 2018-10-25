@@ -1,4 +1,5 @@
 ﻿using Robot2game.Classes.Factories;
+using Robot2game.Classes.GameCommands;
 using Robot2game.Classes.RobotTypes;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace Robot2game.Classes
     {
         private Player player;
         private Robot robot;
+        private Command[] commands;
+        private int turn = 0;
 
         private float nofreightchance = 0.2F; // Chanse of non-freight stop
 
@@ -31,45 +34,29 @@ namespace Robot2game.Classes
                     robot = new CyborgRobot(player.Nickname);
                 else
                     robot = new ScienceRobot(player.Nickname);
+
+            commands = { new MoveCommand(robot); };
         }
 
         public string StartGame()
         {
             Console.WriteLine(String.Format("\nStart of the game\nYour robot - {0}\n{1}\nPress any key to start the game", robot.Type, robot.Legend));
             Console.ReadKey();
+            bool gameended = false;
+            GameController gcon = new GameController(robot);
 
             // Game cycle
             do
             {
                 // TODO Use command pattern
-                bool gameended = false;
-                do
-                {
-                    gameended = robot.CheckEnergy();
-                    if (gameended)
-                    {
-                        break;
-                    }
-                    robot.Move();
+                // Checking a command
+                var comm = commands[turn % 2];
+                gcon.SetCommand(comm);
 
-                }
-                while (rand.Next(0, 100) < nofreightchance * 100);
 
-                if (gameended)
-                    break;
+                
 
-                Cargo[] cargoes = new Cargo[3];
-
-                cargoes = GenerateCargoes(3);
-
-                ShowUI(cargoes);
-
-                ConsoleKeyInfo cki = new ConsoleKeyInfo();
-                cki = Console.ReadKey();
-
-                if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
-                    cargoes[0].Collect(robot);
-
+                turn++;
                 ShowInfo();
             }
             while (true);
@@ -82,20 +69,6 @@ namespace Robot2game.Classes
         private void ShowInfo()
         {
             Console.WriteLine(robot.RobotInformation);
-        }
-        private Cargo[] GenerateCargoes(int count)
-        {
-            Cargo[] cs = new Cargo[count];
-            CargoFactory cf = new CargoFactory();
-
-            for (int i = 0; i < count; i++)
-                cs[i] = cf.Create();
-
-            return cs;
-        }
-        private void ShowUI(Cargo[] cargoes)
-        {
-            Console.WriteLine(String.Format("Button\tResult\n1-3   \tCollect cargo\n4     \texit"));
         }
     }
 }
