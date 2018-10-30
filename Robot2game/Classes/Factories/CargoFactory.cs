@@ -9,11 +9,10 @@ namespace Robot2game.Classes.Factories
 {
     class CargoFactory : Factory<CargoDecorator>
     {
+        private static Random r = new Random();
         public override CargoDecorator Create()
         {
-            Random r = new Random();
-
-            int cargo = r.Next(0, 2);
+            int cargo = r.Next(0, 3);
 
             Cargo c = cargo == 0 ? new StandartCargo() : cargo == 1 ? (Cargo)(new PerishableCargo()) : new ToxicCargo();
 

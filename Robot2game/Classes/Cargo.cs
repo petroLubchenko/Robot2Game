@@ -13,7 +13,15 @@ namespace Robot2game.Classes
 
         protected float weicoef;
         protected float costcoef;
-        protected short shelflife = -1; // -1 - infinity, turns
+        protected short shelflife = -1; // -1 - infinity turns
+
+        public int Shelflife
+        {
+            get
+            {
+                return (int)shelflife;
+            }
+        }
 
         internal ushort Weight
         {

@@ -24,22 +24,15 @@ namespace Robot2game.Classes
         {
             this.player = player;
 
-            // TODO use abstract factory!!!
-            Random r = new Random();
-            int num = r.Next(0, 100);
-            if (num < 50)
-                robot = new WorkerRobot(player.Nickname);
-            else
-                if (num < 80)
-                    robot = new CyborgRobot(player.Nickname);
-                else
-                    robot = new ScienceRobot(player.Nickname);
-
-            commands = { new MoveCommand(robot); };
+            
+            robot = (new RobotCreator()).Create(player.Nickname);
+            Console.WriteLine("Your robot type is " + robot.Type);
+            commands = new Command[]{ new MoveCommand(robot), new GenCollectCommand(robot) };
         }
 
         public string StartGame()
         {
+            turn++;
             Console.WriteLine(String.Format("\nStart of the game\nYour robot - {0}\n{1}\nPress any key to start the game", robot.Type, robot.Legend));
             Console.ReadKey();
             bool gameended = false;
@@ -48,18 +41,43 @@ namespace Robot2game.Classes
             // Game cycle
             do
             {
-                // TODO Use command pattern
+                
                 // Checking a command
                 var comm = commands[turn % 2];
                 gcon.SetCommand(comm);
 
+                Console.WriteLine(String.Format("\nTurn {0}. Next operation - {1}. \nClick arrow right or 1 to continue or \narrow left or 2 to undo last move" +
+                                                "\nbutton i to show information", (int)(turn / 2), comm.ToString()));
 
-                
+                ConsoleKeyInfo cki = new ConsoleKeyInfo();
+                cki = Console.ReadKey();
+
+                if (cki.Key == ConsoleKey.RightArrow || cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
+                    gcon.Execute();
+                else
+                    if (cki.Key == ConsoleKey.LeftArrow || cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
+                {
+                    if (turn != 1)
+                        gcon.SetCommand(commands[(--turn) % 2]);
+                    continue;
+                }
+                else 
+                    if(cki.Key == ConsoleKey.I)
+                {
+                    ShowInfo();
+                    continue;
+                }
+                else
+                    continue;
+
+                if (robot.CheckEnergy())
+                    gameended = true;
 
                 turn++;
-                ShowInfo();
+                if (turn % 2 == 0)
+                    ShowInfo();
             }
-            while (true);
+            while (!gameended);
 
 
             return String.Format("\n\n{0} , {1} , {2}", player.Nickname, robot.RobotInformation, "");
@@ -68,7 +86,7 @@ namespace Robot2game.Classes
 
         private void ShowInfo()
         {
-            Console.WriteLine(robot.RobotInformation);
+            Console.WriteLine("\n" + robot.RobotInformation);
         }
     }
 }

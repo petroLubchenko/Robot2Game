@@ -21,7 +21,16 @@ namespace Robot2game.Classes.GameCommands
 
         public override void Undo()
         {
-            robot.Undo(history.Pop());
+            /*try
+            {*/
+                robot.Undo(history.Pop());
+            /*}
+            catch(InvalidOperationException)
+            { }*/
+        }
+        public override string ToString()
+        {
+            return "Move";
         }
     }
 }

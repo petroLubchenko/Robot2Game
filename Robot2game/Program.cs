@@ -11,9 +11,13 @@ namespace Robot2game
     {
         static void Main(string[] args)
         {
-            new Player("QWerty").StartGame();
+            while (true)
+            {
+                Console.Write("Ibput player name: ");
+                new Player(Console.ReadLine()).StartGame();
 
-            Console.ReadKey();
+                Console.ReadKey();
+            }
         }
     }
 }

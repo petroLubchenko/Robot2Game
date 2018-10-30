@@ -24,7 +24,8 @@ namespace Robot2game.Classes
 
         public void StartGame()
         {
-            new Game(this).StartGame();
+            String endmessage = new Game(this).StartGame();
+            Console.WriteLine("\n\t\tGAME OVER\n" + endmessage);
         }
 
     }

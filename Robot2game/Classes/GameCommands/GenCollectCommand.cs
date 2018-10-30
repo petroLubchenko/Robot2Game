@@ -26,10 +26,13 @@ namespace Robot2game.Classes.GameCommands
 
             if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
                 cargoes[0].Collect(robot);
+            else
             if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
                 cargoes[1].Collect(robot);
+            else
             if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3)
                 cargoes[2].Collect(robot);
+            else
             if (cki.Key != ConsoleKey.D4 || cki.Key != ConsoleKey.NumPad4)
                 Console.WriteLine("Unexpected input");
 
@@ -41,6 +44,11 @@ namespace Robot2game.Classes.GameCommands
         public override void Undo()
         {
             robot.Undo(history.Pop());
+        }
+
+        public override string ToString()
+        {
+            return "Generate and collect";
         }
 
         private Cargo[] GenerateCargoes(int count)

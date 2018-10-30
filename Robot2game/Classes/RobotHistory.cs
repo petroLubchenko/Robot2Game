@@ -8,7 +8,7 @@ namespace Robot2game.Classes
 {
     class RobotHistory
     {
-        private static Stack<RobotMemento> history;
+        private Stack<RobotMemento> history;
         public RobotHistory()
         {
             history = new Stack<RobotMemento>();

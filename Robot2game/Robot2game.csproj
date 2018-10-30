@@ -50,6 +50,11 @@
     <Compile Include="Classes\CargoTypes\StandartCargoDecorator.cs" />
     <Compile Include="Classes\CargoTypes\ToxicCargo.cs" />
     <Compile Include="Classes\Factories\CargoFactory.cs" />
+    <Compile Include="Classes\Factories\CyborgRobotFactory.cs" />
+    <Compile Include="Classes\Factories\RobotCreator.cs" />
+    <Compile Include="Classes\Factories\RobotFactory.cs" />
+    <Compile Include="Classes\Factories\ScienceRobotFactory.cs" />
+    <Compile Include="Classes\Factories\WorkerRobotFactory.cs" />
     <Compile Include="Classes\Factory.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\GameCommands\Command.cs" />
