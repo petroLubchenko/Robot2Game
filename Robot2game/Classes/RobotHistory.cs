@@ -22,5 +22,10 @@ namespace Robot2game.Classes
         {
             return history.Pop();
         }
+
+        public void ClearHistory()
+        {
+            history.Clear();
+        }
     }
 }

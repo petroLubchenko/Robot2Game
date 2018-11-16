@@ -17,6 +17,7 @@ namespace Robot2game.Classes.CargoTypes
 
             robot.TakeDamage(r.Next(1, 40));
 
+            Console.WriteLine("Collected toxic cargo");
             robot.Collect(this);
         }
 

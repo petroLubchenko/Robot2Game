@@ -25,6 +25,8 @@ namespace Robot2game.Classes
         private ushort load;
         private int cost;
         protected float energy;
+
+        private Dictionary<Cargo, int> perishables;
         
         protected ushort DecodeChance
         {
@@ -68,7 +70,7 @@ namespace Robot2game.Classes
         {
             get
             {
-                return String.Format("Robot Type — {0}, Earned — {1}\tE : {2}% | L : {3}%", type, cost.ToString(), energy / MaxBattery, load /MaxLoad);
+                return String.Format("Robot Type — {0}, Earned — {1}\tE : {2}% | L : {3}%", type, cost.ToString(), energy / MaxBattery * 100, load / MaxLoad * 100);
             }
         }
         public string Type
@@ -85,6 +87,8 @@ namespace Robot2game.Classes
             this.name = name;
             load = 0;
             cost = 0;
+
+            perishables = new Dictionary<Cargo, int>();
         }
         public bool CheckEnergy()     // true if no energy
         {
@@ -97,12 +101,20 @@ namespace Robot2game.Classes
                 return true;
             return false;
         }
-        public void Move() // TODO
+        public void Move() 
         {
             float consumtion = TurnConsumption * EnergyConsumptionMul;
             energy = consumtion < energy ? energy - consumtion : 0;
 
-            // TODO check perishable cargoes
+            foreach (var elem in perishables.Keys.ToArray())
+                if (++(perishables[elem]) > elem.Shelflife)
+                {
+                    perishables.Remove(elem);
+                    cost -= elem.Cost;
+                    load -= elem.Weight;
+                }
+
+
         }
 
         public RobotMemento Saveturn()
@@ -119,6 +131,17 @@ namespace Robot2game.Classes
         {
             cost += cargo.Cost;
             load += cargo.Weight;
+
+            if (cargo.Shelflife != -1)
+                perishables.Add(cargo, 0);
+
+            if (load / MaxLoad > 1)
+            {
+                Console.WriteLine("Robot cant collect this cargo");
+                cost -= cargo.Cost;
+                load -= cargo.Weight;
+            }
+
         }
         public void TakeDamage(float energy)
         {

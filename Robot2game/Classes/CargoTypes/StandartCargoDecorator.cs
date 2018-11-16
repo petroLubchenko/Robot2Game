@@ -4,20 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roboto.Classes.CargoTypes
+namespace Robot2game.Classes.CargoTypes
 {
-    class PerishableCargo : Cargo
+    class StandartCargoDecorator : CargoDecorator
     {
-        public PerishableCargo() : base()
+        public StandartCargoDecorator(Cargo cargo) : base(cargo)
         {
-            Random r = new Random();
-            shelflife = (short)r.Next(3, 20);
         }
 
         public override void Collect(Robot robot)
         {
-            //robot.collect()
+            cargo.Collect(robot);
         }
-
     }
 }

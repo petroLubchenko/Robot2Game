@@ -8,7 +8,8 @@ namespace Robot2game.Classes.GameCommands
 {
     abstract class Command
     {
-        private Robot robot;
+        protected Robot robot;
+        protected RobotHistory history = new RobotHistory();
 
         public Command(Robot robot)
         {
@@ -16,5 +17,6 @@ namespace Robot2game.Classes.GameCommands
         }
 
         public abstract void Execute();
+        public abstract void Undo();
     }
 }

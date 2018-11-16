@@ -16,6 +16,7 @@ namespace Robot2game.Classes.CargoTypes
 
         public override void Collect(Robot robot)
         {
+            Console.WriteLine("Colleced perishable cargo. It will be removed in " + shelflife + " turns");
             robot.Collect(this);
         }
 

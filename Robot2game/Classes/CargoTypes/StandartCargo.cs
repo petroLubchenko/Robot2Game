@@ -12,6 +12,7 @@ namespace Robot2game.Classes.CargoTypes
         { }
         public override void Collect(Robot robot)
         {
+            Console.WriteLine("Collected standart cargo");
             robot.Collect(this);
         }
     }
