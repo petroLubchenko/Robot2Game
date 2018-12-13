@@ -8,6 +8,10 @@ namespace Robot2game.Classes.Factories
 {
     public abstract class RobotFactory
     {
-        internal abstract Robot Generate(String name);
+        public RobotFactory()
+        {
+
+        }
+        public abstract Robot Generate(String name);
     }
 }

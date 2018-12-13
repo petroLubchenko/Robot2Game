@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.GameCommands
 {
-    class GameController
+    public class GameController
     {
         private Robot robot;
         private Command command;
+
+        public Command Command
+        {
+            get
+            {
+                return command;
+            }
+        }
 
         public GameController(Robot robot)
         {

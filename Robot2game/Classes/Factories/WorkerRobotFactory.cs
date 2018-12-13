@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.Factories
 {
-    class WorkerRobotFactory : RobotFactory
+    public class WorkerRobotFactory : RobotFactory
     {
-        internal override Robot Generate(String name)
+        public override Robot Generate(String name)
         {
             return new WorkerRobot(name);
         }

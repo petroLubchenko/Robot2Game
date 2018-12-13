@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.GameCommands
 {
-    abstract class Command
+    public abstract class Command
     {
         protected Robot robot;
         protected RobotHistory history = new RobotHistory();

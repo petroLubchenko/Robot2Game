@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.CargoTypes
 {
-    class StandartCargo : Cargo
+    public class StandartCargo : Cargo
     {
         public StandartCargo() : base()
         { }

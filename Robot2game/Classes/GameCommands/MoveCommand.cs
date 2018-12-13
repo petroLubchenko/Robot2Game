@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.GameCommands
 {
-    class MoveCommand : Command
+    public class MoveCommand : Command
     {
         public MoveCommand(Robot robot) : base(robot)
         {
@@ -16,7 +16,7 @@ namespace Robot2game.Classes.GameCommands
         {
             robot.Move();
 
-            robot.Saveturn();
+            history.Push(robot.Saveturn());
         }
 
         public override void Undo()

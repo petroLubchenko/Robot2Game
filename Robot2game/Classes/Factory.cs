@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes
 {
-    abstract class Factory<T>
+    public abstract class Factory<T>
     {
         public Factory()
         { }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes
 {
-    class RobotHistory
+    public class RobotHistory
     {
         private Stack<RobotMemento> history;
         public RobotHistory()

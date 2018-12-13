@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes
 {
-    abstract class Robot
+    public abstract class Robot
     {
         private const float defaultbatterycap = 100;
         private const short defaultloadcap = 1000;
-        private const float defaultenergyperturn = 8;
+        private const float defaultenergyperturn = 3;
 
         protected float batterycoef;
         protected float loadcoef;
@@ -27,6 +27,29 @@ namespace Robot2game.Classes
         protected float energy;
 
         private Dictionary<Cargo, int> perishables;
+
+
+        public float Energy
+        {
+            get
+            {
+                return energy;
+            }
+        }
+        public ushort Load
+        {
+            get
+            {
+                return load;
+            }
+        }
+        public int Cost
+        {
+            get
+            {
+                return cost;
+            }
+        }
         
         protected ushort DecodeChance
         {
@@ -119,13 +142,16 @@ namespace Robot2game.Classes
 
         public RobotMemento Saveturn()
         {
-            return new RobotMemento(energy, load, cost);
+            return new RobotMemento(energy, load, cost, batterycoef, loadcoef, consumcoef);
         }
         public void Undo(RobotMemento rm)
         {
             energy = rm.Energy;
             load = rm.Load;
             cost = rm.Cost;
+            batterycoef = rm.batterycoef;
+            loadcoef = rm.loadcoef;
+            consumcoef = rm.consumcoef;
         }
         public void Collect(Cargo cargo)
         {
@@ -146,6 +172,8 @@ namespace Robot2game.Classes
         public void TakeDamage(float energy)
         {
             this.energy -= energy;
+            if (this.energy < 0)
+                this.energy = 0;
         }
         public bool Encrypt()
         {

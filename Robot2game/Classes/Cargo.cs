@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes
 {
-    abstract class Cargo
+    public abstract class Cargo
     {
         private const ushort defweight = 50;
         private const ushort defcost = 100;
@@ -23,7 +23,7 @@ namespace Robot2game.Classes
             }
         }
 
-        internal ushort Weight
+        public ushort Weight
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Robot2game.Classes
                 return defweight;
             }
         }
-        internal ushort Cost
+        public ushort Cost
         {
             get
             {
@@ -41,12 +41,19 @@ namespace Robot2game.Classes
                 return defcost;
             }
         }
+        public short ShelfLife
+        {
+            get
+            {
+                return shelflife;
+            }
+        }
 
         public Cargo()
         {
             Random r = new Random();
-            weicoef = (r.Next(0, 100)) / r.Next(1, 100);
-            costcoef = (r.Next(0, 100)) / r.Next(1, 100);
+            weicoef = (r.Next(1, 100)) / r.Next(1, 100);
+            costcoef = (r.Next(1, 100)) / r.Next(1, 100);
         }
 
         public abstract void Collect(Robot robot);
