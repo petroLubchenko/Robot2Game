@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.Factories
 {
-    class RobotCreator
+    public class RobotCreator
     {
-        internal Robot Create(String name)
+        public Robot Create(String name)
         {
             Random r = new Random();
             byte key = (byte)r.Next(0, 100);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.CargoTypes
 {
-    class EncryptedCargoDecorator : CargoDecorator
+    public class EncryptedCargoDecorator : CargoDecorator
     {
         public EncryptedCargoDecorator(Cargo cargo): base(cargo)
         { }

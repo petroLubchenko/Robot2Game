@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.GameCommands
 {
-    class GenCollectCommand : Command
+    public class GenCollectCommand : Command
     {
         public GenCollectCommand(Robot robot) : base(robot)
         {

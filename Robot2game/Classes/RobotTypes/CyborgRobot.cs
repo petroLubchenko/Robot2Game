@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.RobotTypes
 {
-    class CyborgRobot : Robot
+    public class CyborgRobot : Robot
     {
-        static string cyborglegend = "This is cyborg...";
+        public  static string cyborglegend = "This is cyborg...";
         public CyborgRobot(string name) : base(name)
         {
             legend = cyborglegend;

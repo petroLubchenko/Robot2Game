@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.RobotTypes
 {
-    class ScienceRobot : Robot
+    public class ScienceRobot : Robot
     {
         private static string sciencelegend = "This is science robot...";
 

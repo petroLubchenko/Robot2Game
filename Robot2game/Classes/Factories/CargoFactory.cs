@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Robot2game.Classes.Factories
 {
-    class CargoFactory : Factory<CargoDecorator>
+    public class CargoFactory : Factory<CargoDecorator>
     {
         private static Random r = new Random();
         public override CargoDecorator Create()

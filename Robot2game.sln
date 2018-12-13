@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot2game", "Robot2game\Robot2game.csproj", "{E72A3F0F-F2CD-439C-AE65-F5806941A95C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot2GameTest", "Robot2GameTest\Robot2GameTest.csproj", "{3FB9A1EE-DBC1-45E5-B9D1-1A29EAF92256}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E72A3F0F-F2CD-439C-AE65-F5806941A95C} = {E72A3F0F-F2CD-439C-AE65-F5806941A95C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{E72A3F0F-F2CD-439C-AE65-F5806941A95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E72A3F0F-F2CD-439C-AE65-F5806941A95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E72A3F0F-F2CD-439C-AE65-F5806941A95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB9A1EE-DBC1-45E5-B9D1-1A29EAF92256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB9A1EE-DBC1-45E5-B9D1-1A29EAF92256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB9A1EE-DBC1-45E5-B9D1-1A29EAF92256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB9A1EE-DBC1-45E5-B9D1-1A29EAF92256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
